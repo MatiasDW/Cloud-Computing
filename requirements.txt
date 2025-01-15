@@ -1,0 +1,6 @@
+fastapi==0.100.0
+uvicorn==0.22.0
+black==24.1.0
+ruff==0.1.14
+pytest==8.3.4
+docker==7.1.0

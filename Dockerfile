@@ -1,15 +1,18 @@
+# Imagen base optimizada para FastAPI
 FROM tiangolo/uvicorn-gunicorn:python3.10 AS carlemany-backend-base
 
+# Actualizar pip
 RUN pip install --upgrade pip
 
-COPY requirements/base.txt /tmp/requirements/
+# Copiar e instalar dependencias
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
-RUN pip install -r /tmp/requirements/base.txt
-
-RUN mkdir /backend-backend
-
+# Establecer el directorio de trabajo
 WORKDIR /carlemany-backend
 
-COPY . ./
+# Copiar el código del proyecto
+COPY . .
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--log-level", "error", "--lifespan", "on"]
+# Comando para iniciar la aplicación
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--log-level", "error"]

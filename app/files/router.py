@@ -10,6 +10,10 @@ async def list_files():
 async def upload_file():
     return {"message": "Upload a file"}
 
+@router.post("/merge")
+async def merge_files():
+    return {"message": "Merge files"}
+
 @router.get("/{id}")
 async def get_file(id: int):
     return {"message": f"Get file with ID {id}"}
@@ -21,7 +25,3 @@ async def update_file(id: int):
 @router.delete("/{id}")
 async def delete_file(id: int):
     return {"message": f"Delete file with ID {id}"}
-
-@router.post("/merge")
-async def merge_files():
-    return {"message": "Merge files"}
